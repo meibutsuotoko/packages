@@ -177,6 +177,22 @@ Description: empty package to prepare a machine as OpenNebula Node
  This package prepares the machine for being a node in an OpenNebula
  cloud.
 
+Package: opennebula-node-lxd
+Architecture: any
+Depends: opennebula-node,
+         kpartx,
+         libvncserver1
+Pre-Depends: snapd
+Suggests: rbd-nbd
+Replaces: lxd,
+          lxd-client,
+          opennebula-lxd-snap
+Conflicts: lxd,
+           lxd-client,
+           opennebula-lxd-snap
+Description: sets up an OpenNebula LXD virtualization node
+
+
 Package: python-pyone
 Section: python
 Architecture: all
