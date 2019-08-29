@@ -183,6 +183,8 @@ def pack_gem(gem, build_dir, fpm_path)
                 '--rpm-ignore-iteration-in-dependencies',
                 '--rpm-autoreq',
                 '--directories', gem[:install_location],
+                '--exclude', 'cache',
+                '--exclude', "gems/#{gem[:name]}-#{gem[:version]}/ext",
                 '--prefix', gem[:install_location],
                 '--gem-bin-path', gem[:bin_path],
                 '--gem-package-name-prefix', gem[:name_prefix],
