@@ -183,9 +183,11 @@ Package: opennebula-node-lxd
 Architecture: any
 Depends: opennebula-node,
          kpartx,
-         libvncserver1
+         libvncserver1,
+         e2fsprogs
 Pre-Depends: snapd
-Suggests: rbd-nbd
+Suggests: rbd-nbd,
+          xfsprogs
 Replaces: lxd,
           lxd-client,
           opennebula-lxd-snap

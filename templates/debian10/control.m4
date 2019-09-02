@@ -184,7 +184,8 @@ Depends: opennebula-node,
          libvncserver1,
          e2fsprogs
 Pre-Depends: snapd
-Suggests: rbd-nbd, xfsprogs
+Suggests: rbd-nbd,
+          xfsprogs
 Replaces: lxd,
           lxd-client,
           opennebula-lxd-snap
