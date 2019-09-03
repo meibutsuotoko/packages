@@ -193,9 +193,9 @@ Depends: opennebula-node,
          kpartx,
          libvncserver1,
          e2fsprogs,
+         xfsprogs,
          lxd (>= 3.0.0) | opennebula-lxd-snap (= ${source:Version})
-Suggests: rbd-nbd,
-          xfsprogs
+Suggests: rbd-nbd
 Replaces: lxd (<< 3.0.0),
           lxd-client (<< 3.0.0)
 Conflicts: lxd (<< 3.0.0),
