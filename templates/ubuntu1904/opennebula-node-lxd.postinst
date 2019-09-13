@@ -16,10 +16,6 @@ if [ "$1" = "configure" ]; then
         if ! [ -f /usr/bin/lxc ]; then
             ln -s /snap/bin/lxc /usr/bin/lxc
         fi
-
-        if ! grep -qF '/snap/bin/lxc' /etc/sudoers.d/opennebula-lxd; then
-            echo 'oneadmin ALL=(ALL:ALL) NOPASSWD: /snap/bin/lxc' >> /etc/sudoers.d/opennebula-lxd
-        fi
     fi
 
     ###
