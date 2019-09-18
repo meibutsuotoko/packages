@@ -115,6 +115,7 @@ ifneq (,$(filter opennebula-flow, $(shell dh_listpackages)))
 		/usr/lib/tmpfiles.d/
 endif
 ifneq (,$(filter opennebula-node, $(shell dh_listpackages)))
+	dh_install -p opennebula-node share/pkgs/opennebula-node /etc/sudoers.d/
 	dh_install -p opennebula-node share/etc/sysctl.d/bridge-nf-call.conf /etc/sysctl.d/
 	dh_install -p opennebula-node share/etc/cron.d/opennebula-node /etc/cron.d/
 	dh_install -p opennebula-node share/pkgs/${DISTRO}-systemd/opennebula-node.conf \
@@ -155,6 +156,9 @@ override_dh_fixperms:
 	dh_fixperms
 ifneq (,$(filter opennebula-common, $(shell dh_listpackages)))
 	chmod 0440 debian/opennebula-common/etc/sudoers.d/opennebula
+endif
+ifneq (,$(filter opennebula-node, $(shell dh_listpackages)))
+	chmod 0440 debian/opennebula-node/etc/sudoers.d/opennebula-node
 endif
 
 override_dh_systemd_start:
