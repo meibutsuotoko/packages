@@ -25,3 +25,11 @@ EOF
         systemctl try-restart libvirt-bin 2>/dev/null || true
     fi
 fi
+
+if [ "$1" = 'purge' ]; then
+    sudoer="/etc/sudoers.d/opennebula-node"
+
+    if test -f "${sudoer}"; then
+        rm "${sudoer}"
+    fi
+fi
