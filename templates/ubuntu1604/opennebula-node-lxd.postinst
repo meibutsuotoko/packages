@@ -66,7 +66,7 @@ EOF
     PARAMS_LOOP='max_loop=256'
     PARAMS_NBD='nbds_max=256'
 
-    MODULES_CONF='opennebula-lxd.conf'
+    MODULES_CONF='opennebula-node-lxd.conf'
     if ! [ -f "/etc/modprobe.d/${MODULES_CONF}" ]; then
         cat - <<EOF >"/etc/modprobe.d/${MODULES_CONF}"
 options loop ${PARAMS_LOOP}
