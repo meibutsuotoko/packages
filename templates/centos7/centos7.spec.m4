@@ -469,6 +469,7 @@ install -p -D -m 644 %{SOURCE1} \
 # sudoers
 %{__mkdir} -p %{buildroot}%{_sysconfdir}/sudoers.d
 install -p -D -m 440 share/pkgs/CentOS/opennebula.sudoers %{buildroot}%{_sysconfdir}/sudoers.d/opennebula
+install -p -D -m 440 share/pkgs/opennebula-node %{buildroot}%{_sysconfdir}/sudoers.d/opennebula-node
 
 # logrotate
 %{__mkdir} -p %{buildroot}%{_sysconfdir}/logrotate.d
@@ -846,6 +847,7 @@ echo ""
 %config %{_sysconfdir}/polkit-1/localauthority/50-local.d/50-org.libvirt.unix.manage-opennebula.pkla
 %config %{_sysconfdir}/sysctl.d/bridge-nf-call.conf
 %config %{_sysconfdir}/cron.d/opennebula-node
+%config %{_sysconfdir}/sudoers.d/opennebula-node
 
 /lib/tmpfiles.d/opennebula-node.conf
 
