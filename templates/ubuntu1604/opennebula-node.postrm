@@ -26,10 +26,4 @@ EOF
     fi
 fi
 
-if [ "$1" = 'purge' ]; then
-    sudoer="/etc/sudoers.d/opennebula-node"
 
-    if test -f "${sudoer}"; then
-        rm "${sudoer}"
-    fi
-fi
