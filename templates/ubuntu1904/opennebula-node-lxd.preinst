@@ -4,6 +4,11 @@ set -e
 
 case "$1" in
     install|upgrade)
+    install|upgrade)
+        # Rename 5.8 lxd sudoers
+        dir="/etc/sudoers.d"
+        [[ -e "$dir/opennebula-lxd" ]] && mv "$dir/opennebula-lxd" "$dir/opennebula-node-lxd" 
+
         if ! command -v lxd >/dev/null; then
             export PATH=$PATH:/snap/bin
         fi
