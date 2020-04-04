@@ -96,9 +96,7 @@ Source8: opennebula-addon-markets-%{version}.tar.gz
 Source9: java-oca-%{version}.tar.gz
 %endif
 
-%if 0%{?rhel}
 Patch0: proper_path_emulator.diff
-%endif
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
@@ -518,7 +516,9 @@ OpenNebula provisioning tool
 mv java-oca-%{version}/jar/ src/oca/java/
 %endif
 
+%if 0%{?rhel}
 %patch0 -p1
+%endif
 
 %build
 %set_build_flags
