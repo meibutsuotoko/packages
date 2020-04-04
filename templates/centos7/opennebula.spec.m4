@@ -91,6 +91,7 @@ BuildRequires: ws-commons-util
 BuildRequires: xmlrpc-common
 BuildRequires: xmlrpc-client
 BuildRequires: systemd-devel
+BuildRequires: rubygems
 
 ################################################################################
 # Requires

@@ -96,7 +96,9 @@ Source8: opennebula-addon-markets-%{version}.tar.gz
 Source9: java-oca-%{version}.tar.gz
 %endif
 
+%if 0%{?rhel}
 Patch0: proper_path_emulator.diff
+%endif
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
@@ -116,6 +118,7 @@ BuildRequires: pkgconfig
 BuildRequires: ruby
 BuildRequires: sqlite-devel
 BuildRequires: systemd-devel
+BuildRequires: rubygems
 %if 0%{?rhel} == 8 || 0%{?fedora}
 BuildRequires: python3-rpm-macros
 BuildRequires: python3-scons
