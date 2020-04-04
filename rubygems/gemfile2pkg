@@ -46,7 +46,22 @@ def setup_fpm(build_dir)
                   '--install-dir', "#{build_dir}/fpm",
                   '--bindir', "#{build_dir}/fpm/bin",
                   'fpm'
+
     run_command(fpm_install)
+
+    # Patch FPM not to use --no-ri and --no-rdoc on RubyGems 3.x
+    # until FPM > 1.11.0 is released
+    unless ::Gem::VERSION =~ /^[012]\./
+      gemrb = Dir["#{build_dir}/fpm/gems/fpm*/lib/fpm/package/gem.rb"].first
+
+      if gemrb
+        run_command(['sed',
+                     '-i',
+                     '-e',
+                    's/"--no-ri", "--no-rdoc"/"--no-document"/',
+                    gemrb])
+      end
+    end
   end
   ENV['GEM_HOME'] = "#{build_dir}/gems"
   "#{build_dir}/fpm/bin/fpm"
@@ -141,6 +156,7 @@ def run_command(command)
   stdout, stderr, status = Open3.capture3(*command)
   unless status.success?
     STDERR.puts("Error executing command:\n#{command.join(' ')}")
+    STDERR.puts(stdout)
     STDERR.puts(stderr)
     return false, nil
   end
